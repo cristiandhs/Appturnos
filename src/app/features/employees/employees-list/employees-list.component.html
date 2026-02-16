@@ -1,0 +1,67 @@
+<div class="employees-container">
+  <div class="header">
+    <h1>Empleados</h1>
+    <button (click)="logout()" class="btn-logout" aria-label="Cerrar sesión">
+      Cerrar Sesión
+    </button>
+  </div>
+
+  @if (errorMessage()) {
+    <div class="error-message" role="alert">
+      {{ errorMessage() }}
+      <button (click)="loadEmployees()" class="btn-retry">Reintentar</button>
+    </div>
+  }
+
+  @if (isLoading()) {
+    <div class="loading" aria-busy="true" aria-label="Cargando empleados">
+      <div class="spinner"></div>
+      <p>Cargando empleados...</p>
+    </div>
+  }
+
+  @if (!isLoading() && employees().length > 0) {
+    <div class="employees-grid">
+      @for (employee of employees(); track employee.id) {
+        <div class="employee-card">
+          <div class="card-header">
+            <h2>{{ employee.name }}</h2>
+          </div>
+          <div class="card-body">
+            <p>
+              <strong>Email:</strong>
+              <a [href]="'mailto:' + employee.email">{{ employee.email }}</a>
+            </p>
+            @if (employee.phone) {
+              <p>
+                <strong>Teléfono:</strong>
+                {{ employee.phone }}
+              </p>
+            }
+            @if (employee.company) {
+              <p>
+                <strong>Empresa:</strong>
+                {{ employee.company.name }}
+              </p>
+            }
+          </div>
+          <div class="card-footer">
+            <button
+              (click)="assignShift(employee.id)"
+              class="btn-assign"
+              [attr.aria-label]="'Asignar turno a ' + employee.name"
+            >
+              Asignar Turno
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+  }
+
+  @if (!isLoading() && employees().length === 0 && !errorMessage()) {
+    <div class="no-data">
+      <p>No hay empleados disponibles</p>
+    </div>
+  }
+</div>

@@ -21,8 +21,11 @@ Enlace de deploy realizado con firebase: appturnos-12d40.web.app
 
 ### Desarrollo Local
 \\\bash
+
 npm install
+
 npm start
+
 \\\
 Abre http://localhost:4200
 

@@ -22,6 +22,8 @@ Enlace de deploy realizado con firebase: appturnos-12d40.web.app
 ### Desarrollo Local
 \\\bash
 
+git clone https://github.com/cristiandhs/Appturnos
+cd Appturnos
 npm install
 
 npm start

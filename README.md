@@ -4,6 +4,8 @@ Aplicación Angular 21
 
 Implementa un sistema de login, listado de empleados y asignación de turnos con protección de rutas.
 
+Enlace de deploy realizado con firebase: appturnos-12d40.web.app
+
 ##  Características
 
 -  **Autenticación** - Login con validación de credenciales
